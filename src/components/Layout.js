@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import ContactForm from './ContactForm'
+import CurrentPets from './CurrentPets'
 
 
 
@@ -16,10 +17,10 @@ export default class Layout extends Component {
         <div className="navRow">
           <h3 className="brand">FURBALL STALL</h3>
           <div className="navBtn">
-            <p>Animals</p>
+            <Link to={'/clients'}>Animals</Link>
           </div>
           <div className="navBtn">
-            <p>Clients</p>
+            <Link to={'/clients'}>Clients</Link>
           </div>
         </div>
         <div className="mainImg">
@@ -32,6 +33,7 @@ export default class Layout extends Component {
         </div>
         <div className="displayRow">
           <ContactForm />
+          <CurrentPets />
         </div>
       </div>
     )

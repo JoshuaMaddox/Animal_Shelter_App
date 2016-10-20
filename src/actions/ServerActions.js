@@ -1,11 +1,27 @@
 import AppDispatcher from '../AppDispatcher'
 
 const ServerActions = {
-  receiveSearchResults(varName){
+  receiveClients(allClients){
+    console.log('allClients: ', allClients)
     AppDispatcher.dispatch({
-      type: 'TYPE_NAME',
-      payload: { varName }
+      type: 'RECEIVE_CLIENTS',
+      payload: { allClients }
     }) 
+  },
+
+  receiveSingleClient(singleClient) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_SINGLE_CLIENT',
+      payload: { singleClient }
+    }) 
+  },
+
+  receiveClientToEdit(clientToEdit) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_CLIENT_TO_EDIT',
+      payload: { clientToEdit }
+    })
   }
+
 }
 export default ServerActions

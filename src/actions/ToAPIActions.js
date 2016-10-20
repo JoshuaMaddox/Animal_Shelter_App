@@ -1,11 +1,24 @@
 import API from '../API'
 
 const ToAPIActions = {
-  receiveSearchResults(varName){
-    AppDispatcher.dispatch({
-      type: 'TYPE_NAME',
-      payload: { varName }
-    }) 
+  sendNewClient(newClient){
+    API.sendNewClient(newClient)
+  },
+
+  getClients(){
+    API.getClients()
+  },
+
+  searchClient(searchName){
+    API.searchClient(searchName)
+  },
+
+  deleteClient(id){
+    API.deleteClient(id)
+  },
+
+  editClient(id) {
+    API.editClient(id)
   }
 }
 

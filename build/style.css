@@ -3,6 +3,11 @@ body{
   padding: 0;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .navRow, .mainImg {
   display: -webkit-flex;
   display: flex;
@@ -32,8 +37,9 @@ body{
 }
 
 
-.navBtn > p {
+.navBtn > a {
   align-self: center;
+  text-decoration: none;
 }
 
 .brand {
@@ -77,16 +83,33 @@ body{
 
 
 /*---------------- Contact Form ----------------*/
-/*.displayRow {
+.displayRow {
   display: flex;
-}*/
+  flex-direction: row;
+}
 
 .formContainer {
   display: flex;
   width: 50%;
   background-color: lightgrey;
-  /*justify-content: center;
-*/}
+  justify-content: center
+}
+
+.contactHeader {
+  width: 93%;
+  text-align: center;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+}
+
+.subHeader {
+  width: 93%;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  align-self: center;
+}
 
 .contactForm {
   width: 100%;
@@ -94,12 +117,14 @@ body{
   flex-direction: column;
   flex-wrap: wrap;
   padding: 2%;
+  align-self: center;
 }
 
 .test {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2%;
 }
@@ -107,16 +132,8 @@ body{
 .test:nth-of-type(1){
   margin-top: 2%;
 }
-/*.inputAddress {
-     width: 96.5%;
-  height: 30px;
-  border: none;
-  margin: 5px;
-  text-align: center;
-  text-transform: uppercase;
-}*/
 
-.inputName, .inputContact, .addressTwo, .inputAddress{
+.inputName, .inputContact, .addressTwo, .inputAddress, .dateInput, .inputDate {
   width: 45%;
   height: 30px;
   border: none;
@@ -125,12 +142,21 @@ body{
   align-self: center;
 }
 
-.inputName:nth-child(1), .inputContact:nth-child(1){
+.inputName:nth-child(1), .inputContact:nth-child(1), .inputDate:nth-child(1) {
   margin-right: 2%;
 }
 
-.inputAddress {
+.inputAddress, .inputNote {
   width: 92.3%;
+}
+
+.inputNote {
+  border: none;
+  text-align: center;
+}
+
+.inputDate {
+  color: ;
 }
 
 .addressTwo {
@@ -141,54 +167,255 @@ body{
   margin: 0 2% 0 2%;
 }
 
-
-/* {
-  
-  
-  width: 30.5%;
-  height: 30px;
+.contactBtn {
+  margin-top: 10px;
+  width: 92.3%;
+  background-color: #000;
+  color: #fff;
+  height: 50px;
   border: none;
-  margin: 5px;
   text-align: center;
   text-transform: uppercase;
-}*/
+  align-self: center;
+  font-size: 15px
+}
 
-/*.formContact > input, .addressTwo > input {
+.contactBtn:hover {
+  background-color: #222;
+  transition: .05s;
+}
+
+/*---------------- SHOW IMGS ----------------*/
+
+.imgContainer {
+  padding: 2% 0 2% 0;
+  display: flex;
   width: 50%;
-  height: 30px;
-  border: none;
-  margin: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-image: url("cat.jpg");
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+}
+
+.imgRow {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  flex-direction: row;
+  padding: 20px 0 20px 0;
+}
+
+.imgDisplay:nth-child(2){
+  margin: 0 2% 0 2%;
+}
+
+.imgDisplay {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  overflow: hidden;
+  margin-right: 2%;
+  flex-shrink: 0;
+}
+
+.txtDisplay {
+  background-color: #000;
+  color: #fff;
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  padding: 0 2% 0 2%;
+  overflow: scroll;
+}
+
+.txtDisplay > p {
+  align-self: center
+}
+
+.imgDisplay img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+/*---------------- CLIENT NAV ----------------*/
+
+.navBar {
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navUl {
+  display: flex;
+  align-items: center; 
+}
+
+.navUl > li {
+  margin: 0 20px;
+}
+
+.logo {
+  color: #fff;
+  padding-left: 40px;
+  font-size: 20px;
+}
+
+.links {
+  padding-right: 40px;
+}
+
+/*---------------- CLIENT SUPPORT----------------*/
+
+.supportContainer {
+  display: flex;
+}
+
+.addClient {
+  display: flex;
+  width: 50%;
+  background-color: lightgrey;
+}
+
+.searchClient {
+  display: flex;
+}
+
+/*---------------- CLIENT DISPLAY ----------------*/
+
+.mainClientContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.clientContainer {
+  display: flex;
+  padding: 2%;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  flex-basis: 20%;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.clientItem {
   text-align: center;
-  text-transform: uppercase; 
+  height: 40px;
+  background-color: #2c3e50;
+  color: #fff;
+  width: 90%;
+  margin-top: auto;
+  word-break: break-word;
 }
 
-.formContact {
-  width: 100%;
-  margin: 5px;
+.clientBtns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2%;
 }
 
-.formAddress {
-  width: 100%;
-  margin: 5px;
+.clientBtns:nth-child(0) {
+  margin-right: 2%;
 }
 
-.formAddress > input {
-  min-width: 412px;
-  height: 30px;
-  border: none;
-  margin: 5px;
+.clientEditBtn {
+  padding: 3% 3% 3% 3%;
+  font-size: 20px;
+  background-color: #c0392b;
+  color: #fff;
+  width: 45%;
   text-align: center;
   text-transform: uppercase;
-}*/
-
-
-/*.addressTwo > input {
-  min-width: 129px;
-  height: 30px;
+  align-self: center;
   border: none;
-  margin: 5px;
-  text-align: center;
   text-transform: uppercase;
-}*/
+}
 
-       
+.clientEditBtn:hover {
+  background-color: #e74c3c;
+  transition: .5s;
+} 
+
+/*---------------- CLIENT SEP ----------------*/
+
+.clientSep {
+  display: flex;
+  padding: 10px;
+  background-color: #000;
+  justify-content: center;
+  align-items: center;
+}
+
+.sepText {
+  text-transform: uppercase;
+  font-size: 30px;
+  align-self: center;
+  color: #fff;
+} 
+
+/*---------------- CLIENT Search ----------------*/
+
+.searchClient {
+  display: flex;
+  width: 50%;
+  background-color: orange;
+  justify-content: center;
+  background-image: url("cat.jpg");
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+}
+
+.searchInput {
+  align-self: center;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.searchInput > input {
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border: none;
+}
+
+.searchBtn {
+  margin-top: 20px;
+  height: 50px;
+  width: 50%;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  align-self: center;
+}
+
+.searchBtn:hover {
+  background-color: #222;
+
+}
