@@ -8,8 +8,7 @@ export default class AllAnimals extends Component {
     super();
 
     this.state = {
-      allAnimals: AnimalStore.getAllAnimals(),
-      singleClient: AnimalStore.getSingleAnimal()
+      allAnimals: AnimalStore.getAllAnimals()
     }
 
     this._onChange = this._onChange.bind(this)
@@ -30,23 +29,21 @@ export default class AllAnimals extends Component {
 
   _onChange() {
     this.setState({
-      allAnimals: AnimalStore.getAllAnimals(),
-      singleClient: AnimalStore.getSingleAnimal()
+      allAnimals: AnimalStore.getAllAnimals()
     })
   }
 
 
   sendAnimal(e){
     e.preventDefault()
-    const { name, commonName, breed, description, imgurl, clientId, age } = this.refs 
+    const { name, commonName, breed, description, imgurl, clientId } = this.refs 
     let newAnimal = {
-      name: name.value,
-      commonName: commonName.value,
-      breed: breed.value,
-      description: description.value,
-      imgurl: streetAddress.value,
-      clientId: city.value,
-      age: state.value
+      name: name.value || null,
+      commonName: commonName.value || null,
+      breed: breed.value || null,
+      description: description.value || null,
+      imgurl: imgurl.value || null,
+      clientId: clientId.value || null
     }
     ToAPIActions.sendNewAnimal(newAnimal)
   }
@@ -70,46 +67,30 @@ export default class AllAnimals extends Component {
 
   render() {
 
-    const { allAnimals, singleAnimal } = this.state
+    const { allAnimals } = this.state
     let Animals;
-    let singleAnimalResults;
     let searchElements = (
       <div className="searchInput">
         <input ref="searchAnimal" type="text" placeholder='Searh For a Animal by Name'/>
         <button type="submit" className='searchBtn' onClick={this.searchClient}>SEARCH</button>
       </div>
     )
-    if(singleAnimal) {
-      console.log('I am singleAnimal', singleAnimal)
-      singleAnimalResults  = ( 
-          <div className="AnimalContainer" key={singleAnimal[0].AnimalId}>
-              <p className="AnimalItem">{singleAnimal[0].firstName + ' ' + singleAnimal[0].lastName}</p>
-              <p className="AnimalItem">{singleAnimal[0].phone}</p>
-              <p className="AnimalItem">{singleAnimal[0].streetAddress + ' ' + singleAnimal[0].city + ' ' + singleAnimal[0].state  + ' ' + singleAnimal[0].zip}</p>
-              <p className="AnimalItem">{singleAnimal[0].email}</p>
-              <p className="AnimalItem">{singleAnimal[0].note}</p>
-              <div className="AnimalBtns">
-                <button onClick={this.editAnimal} id={singleAnimal[0].AnimalId} className="AnimalEditBtn">Edit Animal</button>
-                <button onClick={this.deleteAnimal} id={singleAnimal[0].AnimalId} className="AnimalEditBtn">Delete Animal</button>
-              </div>
-          </div> 
-      ) 
-    }
-
+ 
     if(allAnimals){
-      console.log('allAnimals have arrived in AllAnimals.js: ', allAnimals)
       Animals = allAnimals.map((Animal, i) => {
-        var { AnimalId, firstName, lastName, phone, streetAddress, city, email, state, zip, note} = Animal
+        var { id, name, commonName, breed, description, clientId, age, imgurl } = Animal
         return ( 
-          <div className="AnimalContainer" key={AnimalId}>
-              <p className="AnimalItem">{firstName + ' ' + lastName}</p>
-              <p className="AnimalItem">{phone}</p>
-              <p className="AnimalItem">{streetAddress + ' ' + city + ' ' + state  + ' ' + zip}</p>
-              <p className="AnimalItem">{email}</p>
-              <p className="AnimalItem">{note}</p>
-              <div className="AnimalBtns">
-                <button onClick={this.editAnimal} id={AnimalId} className="AnimalEditBtn">Edit Animal</button>
-                <button onClick={this.deleteAnimal} id={AnimalId} className="AnimalEditBtn">Delete Animal</button>
+          <div className="clientContainer" key={id}>
+              <p className="clientItem">Animal Name: {name}</p>
+              <p className="clientItem">{clientId ? "You're Late to the Table: Dish Has Been Eaten" : 'Order This Dish.'}</p>
+              <p className="clientItem">Dish Name: {commonName}</p>
+              <p className="clientItem">Meat Type: {breed}</p>
+              <p className="clientItem">{description}</p>
+              <p className="clientItem">{imgurl}</p>
+              <p className="clientItem">Client Id: {clientId}</p>
+              <div className="clientBtns">
+                <button onClick={this.editAnimal} id={id} className="clientEditBtn">Order Dish</button>
+                <button onClick={this.deleteAnimal} id={id} className="clientEditBtn">Dump Dish</button>
               </div>
           </div> 
         ) 
@@ -123,24 +104,24 @@ export default class AllAnimals extends Component {
         {/*---- NAVBAR ----*/}
         <div className="navBar">
           <div className="logo">
-            <p>FURBALL STALL</p>
+            <Link to={'/'}>FURBALL STALL</Link>
           </div>
           <div className="links">
             <ul className='navUl'>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/animals">Animals</Link></li>
+              <li><Link to="/clients">Clients</Link></li>
             </ul>
           </div>
         </div>
 
         {/*---- SEARCH MOST RECENT ----*/}
         <div className="supportContainer">
-          <div className="addAnimal">
+          <div className="editClient">
             {/*---- SEARCH FORM ----*/}
             <form className="contactForm" onSubmit={this.sendAnimal}>
               <div className="test">
-                <h2 className="contactHeader">Add A Animal</h2>
-                <p className="subHeader">Upon submission a new Animal will be added to your database</p>
+                <h2 className="contactHeader">Add a Dish</h2>
+                <p className="subHeader">Upon submission a new Dish will be added to your database</p>
               </div>
               <div className="test">
                 <input ref='name' className="inputName" type="text" placeholder="Animal Name" />
@@ -151,27 +132,21 @@ export default class AllAnimals extends Component {
                 <input ref='imgurl' className="inputContact" type="text" placeholder="Animal Image URL" />
               </div>
               <div className="test">
-                <input ref='age' className="inputAddress" type="number" /> 
                 <input ref='clientId' className="inputAddress" type="text" placeholder="clientId" /> 
               </div>
               <div className="test">
                 <textarea ref='description' className="inputNote" rows='4' cols='50' placeholder="Add a description of the animal" /> 
               </div>
               <div className="test">
-                <button type="submit" className='contactBtn'>Submit Animal</button>
+                <button type="submit" className='contactBtn'>Submit Dish</button>
               </div>
             </form>
           </div>
-          <div className="searchAnimal">
-            <div className="searchInput">
-              {singleAnimal ? singleAnimalResults : searchElements}
-            </div>
-          </div>
         </div>
       {/*---- SEARCH MOST RECENT ----*/}
-      <div className="Animalsep">
+      <div className="clientSep">
         <div className="sepText">
-          <h2>View Animal List</h2>
+          <h2>View All Dishes</h2>
         </div>
       </div>
         <div className='mainAnimalContainer'>

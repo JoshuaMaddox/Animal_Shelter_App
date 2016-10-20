@@ -50,6 +50,15 @@ export default class AllClients extends Component {
       note: note.value
     }
     ToAPIActions.sendNewClient(newClient)
+    firstName.value = ''
+    lastName.value = ''
+    phone.value = ''
+    email.value = ''
+    streetAddress.value = ''
+    city.value = ''
+    state.value = ''
+    zip.value = ''
+    note.value = ''
   }
 
   searchClient(e) {
@@ -89,6 +98,7 @@ export default class AllClients extends Component {
               <p className="clientItem">{singleClient[0].streetAddress + ' ' + singleClient[0].city + ' ' + singleClient[0].state  + ' ' + singleClient[0].zip}</p>
               <p className="clientItem">{singleClient[0].email}</p>
               <p className="clientItem">{singleClient[0].note}</p>
+              <p className="clientItem">{singleClient[0].clientId}</p>
               <div className="clientBtns">
                 <button onClick={this.editClient} id={singleClient[0].clientId} className="clientEditBtn">Edit Client</button>
                 <button onClick={this.deleteClient} id={singleClient[0].clientId} className="clientEditBtn">Delete Client</button>
@@ -108,6 +118,7 @@ export default class AllClients extends Component {
               <p className="clientItem">{streetAddress + ' ' + city + ' ' + state  + ' ' + zip}</p>
               <p className="clientItem">{email}</p>
               <p className="clientItem">{note}</p>
+              <p className="clientItem">Client Id: {clientId}</p>
               <div className="clientBtns">
                 <button onClick={this.editClient} id={clientId} className="clientEditBtn">Edit Client</button>
                 <button onClick={this.deleteClient} id={clientId} className="clientEditBtn">Delete Client</button>
@@ -124,12 +135,12 @@ export default class AllClients extends Component {
         {/*---- NAVBAR ----*/}
         <div className="navBar">
           <div className="logo">
-            <p>FURBALL STALL</p>
+            <Link to={'/'}>FURBALL STALL</Link>
           </div>
           <div className="links">
             <ul className='navUl'>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/animals">Animals</Link></li>
+              <li><Link to="/animals">Dishes</Link></li>
             </ul>
           </div>
         </div>

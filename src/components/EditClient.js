@@ -67,23 +67,23 @@ export default class EditClient extends Component {
         {/*---- NAVBAR ----*/}
         <div className="navBar">
           <div className="logo">
-            <p>FURBALL STALL</p>
+            <Link to={'/'}>FURBALL STALL</Link>
           </div>
           <div className="links">
             <ul className='navUl'>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/animals">Animals</Link></li>
+              <li><Link to="/animals">Dishes</Link></li>
             </ul>
           </div>
         </div>
         {/*---- SEARCH MOST RECENT ----*/}
         <div className="supportContainer">
-          <div className="addClient">
+          <div className="editClient">
             {/*---- SEARCH FORM ----*/}
             <form id={clientId} className="contactForm" onSubmit={this.sendEditedClient}>
               <div className="test">
                 <h2 className="contactHeader">Edit This Client</h2>
-                <p className="subHeader">If your edit is succesful you will be redirected to the clients' page</p>
+                <p className="subHeader">If your edit is successful you will be redirected to the clients' page</p>
               </div>
               <div className="test">
                 <input ref='firstName' className="inputName" type="text" defaultValue={firstName} />

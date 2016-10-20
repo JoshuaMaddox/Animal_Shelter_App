@@ -2,22 +2,23 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import ContactForm from './ContactForm'
 import CurrentPets from './CurrentPets'
+import AnimalStore from '../stores/AnimalStore'
 
 
 
 export default class Layout extends Component {
   constructor() {
     super();
-  }
+   }
 
   render() {
 
     return (
       <div>
         <div className="navRow">
-          <h3 className="brand">FURBALL STALL</h3>
+          <h3 className="brand"><Link to={'/'}>FURBALL STALL</Link></h3>
           <div className="navBtn">
-            <Link to={'/animals'}>Animals</Link>
+            <Link to={'/animals'}>Dishes</Link>
           </div>
           <div className="navBtn">
             <Link to={'/clients'}>Clients</Link>
