@@ -10,8 +10,6 @@ db.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
   commonName VARCHAR(80),
   breed VARCHAR(80),
   description VARCHAR(200),
-  arrived DATE,
-  depart DATE,
   imgurl VARCHAR(200),
   clientId INT,
   PRIMARY KEY (id)

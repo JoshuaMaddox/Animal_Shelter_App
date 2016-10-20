@@ -21,6 +21,28 @@ const ServerActions = {
       type: 'RECEIVE_CLIENT_TO_EDIT',
       payload: { clientToEdit }
     })
+  },
+
+   receiveAnimals(allAnimals){
+    console.log('allAnimals: ', allAnimals)
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_ANIMALS',
+      payload: { allAnimals }
+    }) 
+  },
+
+  receiveSingleAnimal(singleAnimal) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_SINGLE_Animal',
+      payload: { singleAnimal }
+    }) 
+  },
+
+  receiveAnimalToEdit(animalToEdit) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_ANIMAL_TO_EDIT',
+      payload: { animalToEdit }
+    })
   }
 
 }

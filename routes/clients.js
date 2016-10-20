@@ -35,6 +35,16 @@ router.route('/client')
         res.status(400).send(err)
       })
   })
+ .put((req, res) => {
+    Client.editClient(req.body)
+      .then(Client.findAll)
+      .then(clients => {
+        res.send(clients)
+      })
+      .catch(err => {
+        res.status(400).send(err)
+      })
+ })
 
  router.route('/:id')
   .get((req, res) => {

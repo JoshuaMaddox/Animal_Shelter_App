@@ -49,6 +49,75 @@ const API = {
         browserHistory.push('/clients/client/:id')
       })
       .catch(console.error)
+  },
+
+  sendEditedClient(editedClient){
+    put(`/api/clients/client`, editedClient)
+      .then(res => {
+        let { data } = res
+        ServerActions.receiveClients(data)
+        browserHistory.push('/clients')
+      })
+      .catch(console.error)
+  },
+
+  ///////////////////////////////////////////////////
+
+  sendNewAnimal(newAnimal) {
+    post(`/api/animals`, newAnimal)
+      .then(res => {
+        let { data } = res
+        ServerActions.receiveAnimals(data)
+      })
+      .catch(console.error)
+  },
+
+  getAnimals() {
+    get(`/api/animals`)
+      .then(res => {
+        let { data } = res
+        ServerActions.receiveAnimals(data)
+      })
+      .catch(console.error)
+  },
+
+  searchAnimal(searchName) {
+    searchName = encodeURIComponent(searchName)
+    get(`/api/animals/animal?email=${searchName}`)
+      .then(res => {
+        let { data } = res
+        ServerActions.receiveSingleAnimal(data)
+      })
+      .catch(console.error)
+  },
+
+  deleteAnimal(id) {
+    axios.delete(`/api/animals/${id}`)
+    .then(res => {
+        let { data } = res
+        ServerActions.receiveAnimals(data)
+      })
+      .catch(console.error)
+  },
+
+  editAnimal(id){
+    get(`/api/animals/${id}`)
+      .then(res => {
+        let { data } = res
+        ServerActions.receiveAnimalToEdit(data)
+        browserHistory.push('/animals/animal/:id')
+      })
+      .catch(console.error)
+  },
+
+  sendEditedAnimal(editedAnimal){
+    put(`/api/animals/animal`, editedAnimal)
+      .then(res => {
+        let { data } = res
+        ServerActions.receiveAnimals(data)
+        browserHistory.push('/animals')
+      })
+      .catch(console.error)
   }
 }
 

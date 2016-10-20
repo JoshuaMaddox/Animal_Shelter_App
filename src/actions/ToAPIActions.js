@@ -19,7 +19,35 @@ const ToAPIActions = {
 
   editClient(id) {
     API.editClient(id)
-  }
+  },
+
+  sendEditedClient(editedClient) {
+    API.sendEditedClient(editedClient)
+  },
+
+  sendNewAnimal(newAnimal){
+    API.sendNewAnimal(newAnimal)
+  },
+
+  getAnimals(){
+    API.getAnimals()
+  },
+
+  searchAnimal(searchName){
+    API.searchAnimal(searchName)
+  },
+
+  deleteAnimal(id){
+    API.deleteAnimal(id)
+  },
+
+  editAnimal(id) {
+    API.editAnimal(id)
+  },
+
+  sendEditedAnimal(editedAnimal) {
+    API.sendEditedAnimal(editedAnimal)
+  },
 }
 
 export default ToAPIActions

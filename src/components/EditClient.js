@@ -30,20 +30,19 @@ export default class EditClient extends Component {
   sendEditedClient(e) {
     e.preventDefault()
     const { firstName, lastName, phone, email, streetAddress, city, state, zip, note } = this.refs 
-    let newClient = {
+    let editedClient = {
       clientId: e.target.id,
-      firstName: firstName.value,
-      lastName: lastName.value,
-      phone: phone.value,
-      email: email.value,
-      streetAddress: streetAddress.value,
-      city: city.value,
-      state: state.value,
-      zip: zip.value,
-      note: note.value
+      firstName: firstName.value || null,
+      lastName: lastName.value || null,
+      phone: phone.value || null,
+      email: email.value || null,
+      streetAddress: streetAddress.value || null,
+      city: city.value || null,
+      state: state.value || null,
+      zip: zip.value || null,
+      note: note.value || null
     }
-    console.log(newClient)
-    ToAPIActions.sendNewClient(newClient)
+    ToAPIActions.sendEditedClient(editedClient)
   }
 
   render() {

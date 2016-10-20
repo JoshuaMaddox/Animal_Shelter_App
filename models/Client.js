@@ -48,7 +48,6 @@ exports.getClientById = function(id) {
 }
 
 exports.deleteClient = function(id) {
-  console.log('I am id', id)
   return new Promise((resolve, reject) => {
     let sql = squel.delete().from(TABLE_NAME).where(`clientId = ${id}`).toString()
     db.query(sql, (err, result) => {
@@ -56,19 +55,29 @@ exports.deleteClient = function(id) {
         resolve(result)
     })
   })
-} 
+}
 
-
-exports.create = function(client) {
+exports.editClient = function(editedClient) {
   return new Promise((resolve, reject) => {
-    let sql = squel.insert().into(TABLE_NAME).setFields(client).toString()
-
+    let sql = squel.update().table(TABLE_NAME).setFields(editedClient).where(`clientId = ${editedClient.clientId}`).toString()
     db.query(sql, (err, result) => {
       if(err) return reject(err)
         resolve(result)
     })
   })
 }
+
+exports.create = function(client) {
+  return new Promise((resolve, reject) => {
+    let sql = squel.insert().into(TABLE_NAME).setFields(client).toString()
+    db.query(sql, (err, result) => {
+      if(err) return reject(err)
+        resolve(result)
+    })
+  })
+}
+
+
 // exports.create = () => new Promise((resolve, reject) => {
 //   let sql = squel.insert().into(TABLE_NAME).setFields(client).toString()
 //   db.query(sql, (err, result) => {

@@ -17,7 +17,7 @@ export default class Layout extends Component {
         <div className="navRow">
           <h3 className="brand">FURBALL STALL</h3>
           <div className="navBtn">
-            <Link to={'/clients'}>Animals</Link>
+            <Link to={'/animals'}>Animals</Link>
           </div>
           <div className="navBtn">
             <Link to={'/clients'}>Clients</Link>
