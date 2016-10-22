@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ToAPIActions from '../actions/ToAPIActions'
 import ClientStore from '../stores/ClientStore'
 import { Link } from 'react-router'
+import ServerActions from '../actions/ServerActions'
 
 export default class AllClients extends Component {
   constructor() {
@@ -25,6 +26,7 @@ export default class AllClients extends Component {
   }
 
   componentWillUnmount() {
+    ServerActions.removeSingleClient()
     ClientStore.stopListening(this._onChange)
   }
 

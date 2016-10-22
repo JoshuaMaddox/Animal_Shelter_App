@@ -43,6 +43,12 @@ const ServerActions = {
       type: 'RECEIVE_ANIMAL_TO_EDIT',
       payload: { animalToEdit }
     })
+  },
+
+  removeSingleClient(){
+     AppDispatcher.dispatch({
+      type: 'REMOVE_SINGLE_CLIENT'
+    })
   }
 
 }

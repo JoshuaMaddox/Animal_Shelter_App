@@ -23,9 +23,15 @@ class ClientStore extends EventEmitter {
           _clientToEdit = action.payload.clientToEdit
           this.emit('CHANGE')
           break
+        case 'REMOVE_SINGLE_CLIENT':
+          _singleClient = null
+          this.emit('CHANGE')
+          break
       }
     })
   }
+
+  
 
   startListening(cb){
     this.on('CHANGE', cb)
